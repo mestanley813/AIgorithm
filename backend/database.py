@@ -6,7 +6,7 @@ from pymongo import MongoClient
 
 load_dotenv()
 
-class database(object):
+class DB(object):
     def __init__(self):
         MONGO_HOST = os.getenv("MONGO_HOST")
         MONGO_PASSWORD = os.getenv("MONGO_PASSWORD")
@@ -22,6 +22,7 @@ class database(object):
             "buy_price": float(buy_price),
             }
         self.collection.insert_one(post)
+
     def updateDB(self, sell_price):
         # Find most recent document
         query = self.collection.find({}).sort("date_of_purchase", -1).limit(1)[0]
