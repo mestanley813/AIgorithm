@@ -23,7 +23,8 @@ class Account(object):
 
     
     def placeBuyOrder(self, ticker):
-        from database import insertDB, updateDB
+        import database
+        db = database.DB()
         # Cancels current order if there is one open
         closedPosition = self.api.close_all_positions(cancel_orders=True)
 
@@ -35,7 +36,7 @@ class Account(object):
         else:
             time.sleep(15)
             sellPrice = self.api.get_order_by_client_id(closedPosition).filled_avg_price
-            updateDB(sellPrice)
+            db.updateDB(sellPrice)
 
         # Creates an order to buy an asset
         self.logger.info(f'Attempting to buy {ticker}')
@@ -54,5 +55,5 @@ class Account(object):
             self.logger.info(f'Bought {ticker}!')
             time.sleep(15)
             buyPrice = self.api.get_open_position(ticker).avg_entry_price
-            insertDB(ticker, buyPrice)
+            db.insertDB(ticker, buyPrice)
             self.api.get_order_by_id
