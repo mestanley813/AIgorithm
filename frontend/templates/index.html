@@ -11,62 +11,66 @@
     <title>Portfolio</title>
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid bg-info text-dark">
         <div class="row">
-            <main class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <main class="col-md-9 ml-sm-auto col-lg-10 mx-auto pt-4">
                 <h1 id="greeting"></h1>
                     {% if balance_change < 0 %}
-                        <h2>Your portfolio has lost <span id="balance">${{ balance_change }}</span></h2>
+                        <h2>Your portfolio has lost <span id="balance">${{ balance_change }}</span> today</h2>
                     {% else %}
-                        <h2 id="gain">Your portfolio has gained <span id="balance">${{ balance_change }}</span></h2>
+                        <h2 id="gain">Your portfolio has gained <span id="balance">${{ balance_change }}</span> today</h2>
                     {% endif %}
                 
 
-                    <div class="row">
+                    <div class="row mb-5 mb-xl-0">
                         <div class="col-lg-6">
-                            <div class="card shadow h-100 py-2">
+                            <div class="card shadow py-2">
                                 <div class="card-body">
                                     <h5 class="card-title">Last stock purchase:</h5>
-                                    <p class="font-weight-bold">{{ buy }}</p>
+                                    <p class="font-weight-bold display-6">{{ buy }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="card shadow h-100 py-2">
+                            <div class="card shadow py-2 mt-4 mt-xl-0">
                                 <div class="card-body">
                                     <h5 class="card-title">Last stock sold:</h5>
-                                    <p class="font-weight-bold">{{ sell }}</p>
+                                    <p class="font-weight-bold display-6">{{ sell }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                        
+                    <div class="ratio ratio-16x9 mt-4 mt-xl-4">
+                        <iframe src="https://charts.mongodb.com/charts-project-0-xwugo/embed/dashboards?id=304a5c74-3c6e-4efa-8824-95ff8c8304ee&theme=light&autoRefresh=true&maxDataAge=3600&showTitleAndDesc=false&scalingWidth=scale&scalingHeight=scale&attribution=false" ></iframe>
+                    </div>
 
-                    <iframe style="width: auto;height: auto;"  src="https://charts.mongodb.com/charts-project-0-xwugo/embed/dashboards?id=304a5c74-3c6e-4efa-8824-95ff8c8304ee&theme=light&autoRefresh=true&maxDataAge=3600&showTitleAndDesc=false&scalingWidth=scale&scalingHeight=scale&attribution=false" ></iframe>
-
-                    <h2 class="font-weight-bold">Recent trades</h2>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <th class="text-start">Symbol</th>
-                                <th class="text-start">Buy Price</th>
-                                <th class="text-start">Sell Price</th>
-                                <th class="text-start">Net</th>
-                                <th class="text-end">Date</th>
-                            </thead>
-                            <tbody>
-                                {% for stock in stocks[1:] %}
-                                    {% if stock["symbol"]|length%}
-                                        <tr>
-                                            <td class="text-start">{{ stock["symbol"] }}</td>
-                                            <td class="text-start">${{ stock["buy_price"] }}</td>
-                                            <td class="text-start">${{ stock["sell_price"] }}</td>
-                                            <td class="text-start">${{ stock["net"] }}</td>
-                                            <td class="text-end">{{ stock["date_of_purchase"].strftime('%m-%d-%Y') }}</td>
-                                        </tr>
-                                    {% endif %}
-                                {% endfor %}
-                            </tbody>
-                        </table>
+                    <div>
+                        <h2 class="font-weight-bold">Recent trades</h2>
+                        <div class="table-responsive bg-white rounded">
+                            <table class="table table-striped">
+                                <thead>
+                                    <th class="text-start">Symbol</th>
+                                    <th class="text-start">Buy Price</th>
+                                    <th class="text-start">Sell Price</th>
+                                    <th class="text-start">Net</th>
+                                    <th class="text-end">Date</th>
+                                </thead>
+                                <tbody>
+                                    {% for stock in stocks[1:] %}
+                                        {% if stock["symbol"]|length%}
+                                            <tr>
+                                                <td class="text-start">{{ stock["symbol"] }}</td>
+                                                <td class="text-start">${{ stock["buy_price"] }}</td>
+                                                <td class="text-start">${{ stock["sell_price"] }}</td>
+                                                <td class="text-start">${{ stock["net"] }}</td>
+                                                <td class="text-end">{{ stock["date_of_purchase"].strftime('%m-%d-%Y') }}</td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
             </main>
         </div>
