@@ -3,6 +3,9 @@
 ## Live:
 [ec2-3-144-88-5.us-east-2.compute.amazonaws.com](http://ec2-3-144-88-5.us-east-2.compute.amazonaws.com)
 
+## Video Demo:
+[https://www.youtube.com/watch?v=TBC4lEiHmMk](https://www.youtube.com/watch?v=TBC4lEiHmMk)
+
 ## Description:
 An AI-powered flask web application that utilizes the OpenAI Davinci 3 model to recommmend stocks and the Alpaca Python API to execute buy orders based on the AI recommendations.
 
