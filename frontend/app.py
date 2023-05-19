@@ -1,4 +1,8 @@
 from flask import Flask, render_template
+
+import sys 
+sys.path.append("..")
+
 from backend import database, purchase
 
 db = database.DB()
@@ -22,3 +26,6 @@ def index():
     stocks = db.collection.find().sort("date_of_purchase", -1).limit(9)
 
     return render_template("index.html", balance_change=getBalance(), buy=getBought(), sell=getSold(), stocks = stocks)
+
+if __name__ == "__main__":
+    app.run()
