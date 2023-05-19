@@ -8,7 +8,7 @@ from alpaca.trading.requests import MarketOrderRequest
 from alpaca.trading.enums import OrderSide, TimeInForce
 
 load_dotenv()
-logging.basicConfig(filename="test.log",
+logging.basicConfig(filename="output.log",
                     format='%(asctime)s %(levelname)s: %(message)s',
                     filemode='w')
 logging.root.setLevel(logging.NOTSET)
