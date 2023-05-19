@@ -1,7 +1,7 @@
 # AIgorithm
 
 ## Live:
-[ec2-3-144-88-5.us-east-2.compute.amazonaws.com](ec2-3-144-88-5.us-east-2.compute.amazonaws.com)
+[ec2-3-144-88-5.us-east-2.compute.amazonaws.com](http://www.ec2-3-144-88-5.us-east-2.compute.amazonaws.com)
 
 ## Description:
 An AI-powered flask web application that utilizes the OpenAI Davinci 3 model to recommmend stocks and the Alpaca Python API to execute buy orders based on the AI recommendations.
